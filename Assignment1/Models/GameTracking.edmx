@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="GameTrackingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'comp2007-100092199.dbo.Games' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Games">
+          <Key>
+            <PropertyRef Name="GameID" />
+            <PropertyRef Name="TeamOne" />
+            <PropertyRef Name="TeamTwo" />
+            <PropertyRef Name="Winner" />
+            <PropertyRef Name="TeamOnePoints" />
+            <PropertyRef Name="TeamTwoPoints" />
+            <PropertyRef Name="Spectators" />
+          </Key>
+          <Property Name="GameID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TeamOne" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TeamTwo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Winner" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TeamOnePoints" Type="int" Nullable="false" />
+          <Property Name="TeamTwoPoints" Type="int" Nullable="false" />
+          <Property Name="Spectators" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="GameTrackingModelStoreContainer">
+          <EntitySet Name="Games" EntityType="Self.Games" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Games].[GameID] AS [GameID], 
+    [Games].[TeamOne] AS [TeamOne], 
+    [Games].[TeamTwo] AS [TeamTwo], 
+    [Games].[Winner] AS [Winner], 
+    [Games].[TeamOnePoints] AS [TeamOnePoints], 
+    [Games].[TeamTwoPoints] AS [TeamTwoPoints], 
+    [Games].[Spectators] AS [Spectators]
+    FROM [dbo].[Games] AS [Games]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GameTrackingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Game">
+          <Key>
+            <PropertyRef Name="GameID" />
+            <PropertyRef Name="TeamOne" />
+            <PropertyRef Name="TeamTwo" />
+            <PropertyRef Name="Winner" />
+            <PropertyRef Name="TeamOnePoints" />
+            <PropertyRef Name="TeamTwoPoints" />
+            <PropertyRef Name="Spectators" />
+          </Key>
+          <Property Name="GameID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TeamOne" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TeamTwo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Winner" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TeamOnePoints" Type="Int32" Nullable="false" />
+          <Property Name="TeamTwoPoints" Type="Int32" Nullable="false" />
+          <Property Name="Spectators" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="DefaultConnect" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Games" EntityType="Self.Game" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GameTrackingModelStoreContainer" CdmEntityContainer="DefaultConnect">
+          <EntitySetMapping Name="Games">
+            <EntityTypeMapping TypeName="GameTrackingModel.Game">
+              <MappingFragment StoreEntitySet="Games">
+                <ScalarProperty Name="GameID" ColumnName="GameID" />
+                <ScalarProperty Name="TeamOne" ColumnName="TeamOne" />
+                <ScalarProperty Name="TeamTwo" ColumnName="TeamTwo" />
+                <ScalarProperty Name="Winner" ColumnName="Winner" />
+                <ScalarProperty Name="TeamOnePoints" ColumnName="TeamOnePoints" />
+                <ScalarProperty Name="TeamTwoPoints" ColumnName="TeamTwoPoints" />
+                <ScalarProperty Name="Spectators" ColumnName="Spectators" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
